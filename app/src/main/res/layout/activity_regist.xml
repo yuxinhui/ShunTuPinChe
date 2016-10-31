@@ -89,6 +89,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/getyanzhengma"
                 android:text="获取验证码"
@@ -99,8 +100,27 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <RadioGroup
+            android:id="@+id/checkchange"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/chezhu"
+                android:text="车主"
+                android:layout_marginRight="10dp"
+                android:textColor="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:id="@+id/chengke"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffffff"
+                android:text="乘客"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
         <Button
-            android:layout_marginTop="8dp"
             android:text="完成"
             android:textColor="#ffffff"
             android:background="@mipmap/denglu"
