@@ -70,7 +70,8 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent" />
         </LinearLayout>
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/passandlogin_rg"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -87,7 +88,7 @@
                 android:text="自动登录"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
+        </RadioGroup>
         <Button
             android:text="登录"
             android:textColor="#ffffff"
@@ -113,6 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/forgetpass"
                 android:textColor="#ffffff"
                 android:text="忘记密码?"
                 android:layout_width="wrap_content"

@@ -114,7 +114,8 @@ public class RegistActivity extends AppCompatActivity{
                     yanzhengmaNum.setError("验证码不能为空");
                     return;
                 }
-                regist(url_regist);
+                String url_finsh=url_regist+"&tel_code="+validataCode;
+                regist(url_finsh);
                 return;
             }
         });
@@ -123,10 +124,10 @@ public class RegistActivity extends AppCompatActivity{
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i==chezhu.getId()){
                     String owner="owner";
-                    url_regist=ShunTuApplication.URL+"carpool/register?telephone="+telepone+"&password="+password_txt+"&identity="+owner+"&tel_code="+validataCode;
+                    url_regist=ShunTuApplication.URL+"carpool/register?telephone="+telepone+"&password="+password_txt+"&identity="+owner;
                 }else if (i == chengke.getId()){
                     String passenger="passenger";
-                    url_regist=ShunTuApplication.URL+"carpool/register?telephone="+telepone+"&password="+password_txt+"&identity="+passenger+"&tel_code="+validataCode;
+                    url_regist=ShunTuApplication.URL+"carpool/register?telephone="+telepone+"&password="+password_txt+"&identity="+passenger;
                 }
             }
         });
@@ -135,7 +136,6 @@ public class RegistActivity extends AppCompatActivity{
     private void initData() {
         telepone=number.getText().toString();
         password_txt=password.getText().toString();
-        Log.e("密码",password_txt);
         validataCode=yanzhengmaNum.getText().toString();
         Log.e("验证码",validataCode);
     }
@@ -181,18 +181,18 @@ public class RegistActivity extends AppCompatActivity{
     }
 
     //注册的volley请求
-    public void regist(final String url_regist) {
-        StringRequest request=new StringRequest(Request.Method.POST, url_regist,
+    public void regist(final String url_finsh) {
+        StringRequest request=new StringRequest(Request.Method.POST, url_finsh,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        Log.e("注册接口",url_regist);
+                        Log.e("注册接口",url_finsh);
                         if (s != null){
                             Gson gson=new Gson();
                             zhuceBean=gson.fromJson(s,ZhuceBean.class);
-                            Intent intent=new Intent(RegistActivity.this,RegistSuccessActivity.class);
-                            startActivity(intent);
                             if ("ok".equals(zhuceBean.getStatus())){
+                                Intent intent=new Intent(RegistActivity.this,RegistSuccessActivity.class);
+                                startActivity(intent);
                                 DialogUtils.createToasdt(RegistActivity.this,zhuceBean.getMessage());
                             }else {
                                 DialogUtils.createToasdt(RegistActivity.this,"注册失败");

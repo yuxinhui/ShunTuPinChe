@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jinfukeji.shuntupinche.R;
@@ -28,7 +28,7 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
     private ChaXunFragment chaxun_fg;
     private MyFragment my_fg;
     //定义底部导航栏布局
-    private LinearLayout index_layout,chaxun_layout,my_layout;
+    private RelativeLayout index_layout,chaxun_layout,my_layout;
     //定义导航栏中的控件
     private ImageView index_img,chaxun_img,my_img;
     private TextView index_txt,chaxun_txt,my_txt;
@@ -49,9 +49,9 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
     }
     //初始化各个控件
     private void initView() {
-        index_layout= (LinearLayout) findViewById(R.id.index_layout);
-        chaxun_layout= (LinearLayout) findViewById(R.id.chaxun_layout);
-        my_layout= (LinearLayout) findViewById(R.id.my_layout);
+        index_layout= (RelativeLayout) findViewById(R.id.index_layout);
+        chaxun_layout= (RelativeLayout) findViewById(R.id.chaxun_layout);
+        my_layout= (RelativeLayout) findViewById(R.id.my_layout);
 
         index_img= (ImageView) findViewById(R.id.index_img);
         chaxun_img= (ImageView) findViewById(R.id.chaxun_img);
@@ -94,7 +94,7 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
                 index_img.setImageResource(R.mipmap.shouye01);
                 if (index_fg==null){
                     index_fg=new IndexFragment();
-                    transaction.add(R.id.index_layout,index_fg);
+                    transaction.add(R.id.content,index_fg);
                 }else {
                     transaction.show(index_fg);
                 }
@@ -104,7 +104,7 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
                 chaxun_img.setImageResource(R.mipmap.chaxun01);
                 if (chaxun_fg==null){
                     chaxun_fg= new ChaXunFragment();
-                    transaction.add(R.id.chaxun_layout,chaxun_fg);
+                    transaction.add(R.id.content,chaxun_fg);
                 }else {
                     transaction.show(chaxun_fg);
                 }
@@ -114,7 +114,7 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
                 my_img.setImageResource(R.mipmap.geren01);
                 if (my_fg==null){
                     my_fg=new MyFragment();
-                    transaction.add(R.id.my_layout,my_fg);
+                    transaction.add(R.id.content,my_fg);
                 }else {
                     transaction.show(my_fg);
                 }

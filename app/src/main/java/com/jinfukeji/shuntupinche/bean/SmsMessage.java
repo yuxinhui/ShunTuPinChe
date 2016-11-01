@@ -8,9 +8,16 @@ package com.jinfukeji.shuntupinche.bean;
  */
 
 public class SmsMessage {
+
+    /**
+     * message : 短信已发送到您的手机，请注意查收！
+     * status : ok
+     * code : 556187
+     */
+
     private String message;
     private String status;
-    private String data;
+    private String code;
 
     public String getMessage() {
         return message;
@@ -28,12 +35,12 @@ public class SmsMessage {
         this.status = status;
     }
 
-    public String getData() {
-        return data;
+    public String getCode() {
+        return code;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
@@ -41,7 +48,7 @@ public class SmsMessage {
         return "SmsMessage{" +
                 "message='" + message + '\'' +
                 ", status='" + status + '\'' +
-                ", data='" + data + '\'' +
+                ", code='" + code + '\'' +
                 '}';
     }
 }
