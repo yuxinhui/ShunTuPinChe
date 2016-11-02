@@ -28,10 +28,12 @@ public class IndexActivity extends AppCompatActivity {
                 case R.id.login_img_btn:
                     Intent login=new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(login);
+                    finish();
                     break;
                 case R.id.regist_img_btn:
                     Intent regist=new Intent(getApplicationContext(),RegistActivity.class);
                     startActivity(regist);
+                    finish();
                     break;
             }
         }

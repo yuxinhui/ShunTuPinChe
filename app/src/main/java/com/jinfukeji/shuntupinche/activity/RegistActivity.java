@@ -116,6 +116,7 @@ public class RegistActivity extends AppCompatActivity{
                 }
                 String url_finsh=url_regist+"&tel_code="+validataCode;
                 regist(url_finsh);
+                finish();
                 return;
             }
         });

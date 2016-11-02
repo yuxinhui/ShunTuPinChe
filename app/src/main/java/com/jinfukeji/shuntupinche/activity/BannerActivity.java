@@ -5,10 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jinfukeji.shuntupinche.R;
 import com.jinfukeji.shuntupinche.fragment.ChaXunFragment;
@@ -143,5 +145,22 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
         chaxun_img.setImageResource(R.mipmap.chaxun02);
         my_txt.setTextColor(Gray);
         my_img.setImageResource(R.mipmap.geren02);
+    }
+
+    //退出程序
+    private long exitTime=0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            if (System.currentTimeMillis() - exitTime >2000){
+                Toast.makeText(getApplicationContext(),"再按一次退出程序",Toast.LENGTH_SHORT).show();
+                exitTime=System.currentTimeMillis();
+            }else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

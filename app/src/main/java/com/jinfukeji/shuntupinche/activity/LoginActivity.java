@@ -22,7 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.jinfukeji.shuntupinche.R;
 import com.jinfukeji.shuntupinche.ShunTuApplication;
-import com.jinfukeji.shuntupinche.bean.ZhuceBean;
+import com.jinfukeji.shuntupinche.bean.LoginBean;
 import com.jinfukeji.shuntupinche.utils.DialogUtils;
 
 /**
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity{
     private Button login_btn;
 
     String loginId,password;
-    boolean isLogin;
+    public boolean isLogin;
 
     RequestQueue queue;
     @Override
@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity{
                 String url_login= ShunTuApplication.URL+"carpool/login?telephone="+loginId+"&password="+password;
                 Log.e("登录接口",url_login);
                 login(url_login);
+                finish();
                 return;
             }
         });
@@ -108,7 +109,7 @@ public class LoginActivity extends AppCompatActivity{
                     public void onResponse(String s) {
                         if (s != null){
                             Gson gson=new Gson();
-                            ZhuceBean bean=gson.fromJson(s,ZhuceBean.class);
+                            LoginBean bean=gson.fromJson(s,LoginBean.class);
                             if ("ok".equals(bean.getStatus())){
                                 isLogin=true;
                                 ShunTuApplication.getInstace().setLogin(isLogin);
