@@ -1,6 +1,8 @@
 package com.jinfukeji.shuntupinche.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.jinfukeji.shuntupinche.R;
 import com.jinfukeji.shuntupinche.ShunTuApplication;
+import com.jinfukeji.shuntupinche.activity.owenr.OwenrIndexActivity;
 import com.jinfukeji.shuntupinche.bean.LoginBean;
 import com.jinfukeji.shuntupinche.utils.DialogUtils;
 
@@ -32,30 +35,27 @@ import com.jinfukeji.shuntupinche.utils.DialogUtils;
  * 描述:登录界面
  */
 public class LoginActivity extends AppCompatActivity{
-    private EditText phonenumber,pwd;
+    public EditText phonenumber,pwd;
     private TextView needzhuce,forgetpass;
     private RadioGroup passandlogin_rg;
     private RadioButton remberpwd,automaticlogin;
     private Button login_btn;
 
     String loginId,password;
-    public boolean isLogin;
-
+    private SharedPreferences sp;
     RequestQueue queue;
+    LoginBean bean=new LoginBean();
+    String url_login;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        isLogin=ShunTuApplication.getInstace().isLogin();
-        if (isLogin){
-            startMainActivity();
-        }else {
-            queue= Volley.newRequestQueue(this);
-            initView();
-            initData();
-            onClick();
-        }
+        sp=this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);
 
+        queue= Volley.newRequestQueue(this);
+        initView();
+        initData();
+        onClick();
     }
 
     //点击事件
@@ -82,23 +82,23 @@ public class LoginActivity extends AppCompatActivity{
                     pwd.requestFocus();
                     return;
                 }
-                String url_login= ShunTuApplication.URL+"carpool/login?telephone="+loginId+"&password="+password;
+                url_login= ShunTuApplication.URL+"carpool/login?telephone="+loginId+"&password="+password;
                 Log.e("登录接口",url_login);
                 login(url_login);
                 finish();
                 return;
             }
         });
-        /*passandlogin_rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        passandlogin_rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == remberpwd.getId()){
-
+                    sp.edit().putBoolean("ISCHECK",true).commit();
                 }else if (i == automaticlogin.getId()){
-
+                    sp.edit().putBoolean("AUTO_ISCHECK",true).commit();
                 }
             }
-        });*/
+        });
     }
 
     //使用volly进行登录操作
@@ -107,19 +107,34 @@ public class LoginActivity extends AppCompatActivity{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        if (s != null){
+
                             Gson gson=new Gson();
-                            LoginBean bean=gson.fromJson(s,LoginBean.class);
+                            bean=gson.fromJson(s,LoginBean.class);
                             if ("ok".equals(bean.getStatus())){
-                                isLogin=true;
-                                ShunTuApplication.getInstace().setLogin(isLogin);
-                                startMainActivity();
+                                if (remberpwd.isChecked()){
+                                    SharedPreferences.Editor editor=sp.edit();
+                                    editor.putString("USERNAME",loginId);
+                                    editor.putString("PASSWORD",password);
+                                    editor.commit();
+                                }
+                                /*LoginBean.DataBean dataBeen=bean.getData();
+                                Log.e("TAG",dataBeen.getId().toString());*/
+                                if ("passenger".equals(bean.getIdentity())){
+                                    startMainActivity();
+                                    finish();
+                                }if ("owner".equals(bean.getIdentity())){
+                                    Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
+                                    intent.putExtra("id",bean.getData().getId());
+                                    intent.putExtra("telephone",bean.getData().getTelephone());
+                                    startActivity(intent);
+                                    finish();
+                                }
                                 DialogUtils.createToasdt(LoginActivity.this,bean.getMessage());
                             }else {
                                 DialogUtils.createToasdt(LoginActivity.this,"手机号或者密码错误");
                             }
                         }
-                    }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
@@ -143,14 +158,13 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     //获取手机号与密码
-    private void initData() {
+    public void initData() {
         loginId=phonenumber.getText().toString();
         password=pwd.getText().toString();
     }
 
     private void startMainActivity() {
         Intent intent=new Intent(getApplication(),BannerActivity.class);
-        intent.putExtra("isLogin",isLogin);
         startActivity(intent);
     }
 
@@ -164,5 +178,24 @@ public class LoginActivity extends AppCompatActivity{
         login_btn= (Button) findViewById(R.id.login_btn);
         needzhuce= (TextView) findViewById(R.id.needzhuce);
         forgetpass= (TextView) findViewById(R.id.forgetpass);
+
+        //判断记住密码选择框的状态
+        if (sp.getBoolean("ISCHECK",false)){
+            //设置默认是记住密码状态
+            remberpwd.setChecked(true);
+            phonenumber.setText(sp.getString("USER_NAME",""));
+            pwd.setText(sp.getString("PASSWORD",""));
+            //判断自动登陆选择框状态
+            if (sp.getBoolean("AUTO_ISCHECK",false)){
+                //设置默认是自动登录状态
+                automaticlogin.setChecked(true);
+                if ("passenger".equals(bean.getIdentity())){
+                    startMainActivity();
+                }else {
+                    Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
+                    startActivity(intent);
+                }
+            }
+        }
     }
 }

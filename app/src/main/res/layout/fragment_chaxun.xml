@@ -1,10 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="插叙什么"
+    <RelativeLayout
+        android:background="#303F9F"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/pinche_return_img"
+            android:src="@mipmap/fanhui"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="顺途查询"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="10dp">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/lvtu_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/lvtu_img"
+            android:src="@mipmap/lvtu"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="我的旅途"
+            android:textColor="#000000"
+            android:layout_toEndOf="@id/lvtu_img"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@mipmap/jiantou"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <TextView
+            android:id="@+id/chengke_start_txt"
+            android:layout_marginStart="10dp"
+            android:textColor="#000000"
+            android:text="出发站 : "
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/chengke_start_et"
+            android:layout_toEndOf="@id/chengke_start_txt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_height="35dp">
+        <TextView
+            android:id="@+id/chengke_finsh_txt"
+            android:layout_marginStart="10dp"
+            android:textColor="#000000"
+            android:text="终点站 : "
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/chengke_finsh_et"
+            android:layout_toEndOf="@id/chengke_finsh_txt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_height="35dp">
+        <TextView
+            android:id="@+id/chengke_renshu_txt"
+            android:layout_marginStart="10dp"
+            android:textColor="#000000"
+            android:text="核载人数 : "
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/chengke_renshu_et"
+            android:layout_toEndOf="@id/chengke_renshu_txt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_height="35dp">
+        <TextView
+            android:id="@+id/chengke_date_txt"
+            android:layout_marginStart="10dp"
+            android:textColor="#000000"
+            android:text="出发日期 : "
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/chengke_date_et"
+            android:layout_toEndOf="@id/chengke_date_txt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp">
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/chengke_chaxun_but"
+        android:text="立即查询"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/lijichaxun_bg"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+        android:layout_height="25dp" />
+
+    <ListView
+        android:id="@+id/chengke_lv"
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+</LinearLayout>

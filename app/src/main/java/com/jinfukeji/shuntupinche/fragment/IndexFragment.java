@@ -3,12 +3,15 @@ package com.jinfukeji.shuntupinche.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.jinfukeji.shuntupinche.R;
+import com.jinfukeji.shuntupinche.activity.BannerActivity;
 
 /**
  * Created by "于志渊"
@@ -19,6 +22,7 @@ import com.jinfukeji.shuntupinche.R;
 
 public class IndexFragment extends Fragment {
     private TextView bybus_img,historicalrecord_img,huodong_img,feedback_img;
+    private BannerActivity bannerActivity= (BannerActivity) getActivity();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +50,11 @@ public class IndexFragment extends Fragment {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.bybus_img:
+                    FragmentManager fm=getFragmentManager();
+                    FragmentTransaction ft=fm.beginTransaction();
+                    ft.addToBackStack(null);
+                    ft.replace(R.id.content,new ChaXunFragment()).commit();
+                    //bannerActivity.hideBanner();
                     break;
                 case R.id.historicalrecord_img:
                     break;

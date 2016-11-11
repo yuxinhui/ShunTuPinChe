@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="#303F9F"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/verify_return"
+            android:src="@mipmap/fanhui"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="车主认证"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="10dp">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/verify_shenfen_img"
+            android:src="@mipmap/shenfen"
+            android:layout_marginStart="10dp"
+            android:layout_width="50dp"
+            android:layout_height="46dp" />
+        <TextView
+            android:textColor="#000000"
+            android:text="身 份 证"
+            android:layout_below="@id/verify_shenfen_img"
+            android:layout_alignStart="@id/verify_shenfen_img"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/verify_shenfen_zheng_img"
+            android:background="@mipmap/zhengmian"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_toEndOf="@+id/verify_shenfen_img"
+            android:layout_marginLeft="15dp" />
+        <ImageView
+            android:id="@+id/verify_fan_img"
+            android:background="@mipmap/fanmian"
+            android:layout_toEndOf="@id/verify_shenfen_zheng_img"
+            android:layout_marginLeft="15dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/verify_jiashi_img"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/jiashizheng"
+            android:layout_marginStart="10dp"
+            android:layout_width="50dp"
+            android:layout_height="46dp" />
+        <TextView
+            android:text="驾 驶 证"
+            android:textColor="#000000"
+            android:layout_below="@id/verify_jiashi_img"
+            android:layout_alignStart="@id/verify_jiashi_img"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/verify_jiashi_zheng_img"
+            android:background="@mipmap/zhengmian"
+            android:layout_toEndOf="@id/verify_jiashi_img"
+            android:layout_marginLeft="15dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp" />
+        <ImageView
+            android:id="@+id/verify_jiashi_fan_img"
+            android:background="@mipmap/fanmian"
+            android:layout_toEndOf="@id/verify_jiashi_zheng_img"
+            android:layout_marginLeft="15dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/verify_chexing_img"
+            android:src="@mipmap/chexing"
+            android:layout_marginStart="10dp"
+            android:layout_width="50dp"
+            android:layout_height="46dp" />
+        <TextView
+            android:textColor="#000000"
+            android:text="车辆类型"
+            android:layout_below="@id/verify_chexing_img"
+            android:layout_alignStart="@id/verify_chexing_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/verify_chexing_zheng_img"
+            android:layout_toEndOf="@id/verify_chexing_img"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/zhengmian"
+            android:layout_width="100dp"
+            android:layout_height="70dp" />
+        <ImageView
+            android:id="@+id/verify_chexing_fan_img"
+            android:layout_toEndOf="@id/verify_chexing_zheng_img"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/cemian"
+            android:layout_width="100dp"
+            android:layout_height="70dp" />
+    </RelativeLayout>
+    <Button
+        android:id="@+id/verify_tijiao_but"
+        android:text="立即提交"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/lijichaxun_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp" />
+</LinearLayout>

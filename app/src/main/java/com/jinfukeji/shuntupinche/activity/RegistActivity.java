@@ -197,6 +197,7 @@ public class RegistActivity extends AppCompatActivity{
                                 DialogUtils.createToasdt(RegistActivity.this,zhuceBean.getMessage());
                             }else {
                                 DialogUtils.createToasdt(RegistActivity.this,"注册失败");
+                                return;
                             }
                         }
                     }

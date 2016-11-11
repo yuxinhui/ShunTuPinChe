@@ -4,7 +4,7 @@ package com.jinfukeji.shuntupinche.bean;
  * Created by "于志渊"
  * 时间:"11:24"
  * 包名:com.jinfukeji.shuntupinche.bean
- * 描述:注册实例
+ * 描述:登陆实例
  */
 
 public class LoginBean {
@@ -70,6 +70,14 @@ public class LoginBean {
         private String sex;
         private String balance;
 
+        private static DataBean bean;
+        public static DataBean getInstance() {
+            if (bean == null) {
+                bean = new DataBean();
+            }
+            return bean;
+        }
+
         public String getId() {
             return id;
         }
@@ -116,6 +124,18 @@ public class LoginBean {
 
         public void setBalance(String balance) {
             this.balance = balance;
+        }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "id='" + id + '\'' +
+                    ", telephone='" + telephone + '\'' +
+                    ", password='" + password + '\'' +
+                    ", username='" + username + '\'' +
+                    ", sex='" + sex + '\'' +
+                    ", balance='" + balance + '\'' +
+                    '}';
         }
     }
 }

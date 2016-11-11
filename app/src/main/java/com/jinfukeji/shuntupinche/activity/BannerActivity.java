@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +31,8 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
     private ChaXunFragment chaxun_fg;
     private MyFragment my_fg;
     //定义底部导航栏布局
-    private RelativeLayout index_layout,chaxun_layout,my_layout;
+    public RelativeLayout index_layout,chaxun_layout,my_layout;
+    private LinearLayout banner_ll;
     //定义导航栏中的控件
     private ImageView index_img,chaxun_img,my_img;
     private TextView index_txt,chaxun_txt,my_txt;
@@ -51,6 +53,8 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
     }
     //初始化各个控件
     private void initView() {
+        banner_ll= (LinearLayout) findViewById(R.id.banner_ll);
+
         index_layout= (RelativeLayout) findViewById(R.id.index_layout);
         chaxun_layout= (RelativeLayout) findViewById(R.id.chaxun_layout);
         my_layout= (RelativeLayout) findViewById(R.id.my_layout);
@@ -162,5 +166,10 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    //隐藏导航栏
+    public void hideBanner(){
+        banner_ll.setVisibility(View.GONE);
     }
 }

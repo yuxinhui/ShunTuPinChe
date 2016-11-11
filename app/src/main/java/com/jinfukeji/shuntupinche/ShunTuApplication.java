@@ -12,7 +12,7 @@ import android.app.Application;
 public class ShunTuApplication extends Application {
     public boolean isLogin=false;
     public static ShunTuApplication instace;
-    public static final String URL="http://192.168.0.190:8080/";
+    public static final String URL="http://192.168.0.198:8080/";
 
     @Override
     public void onCreate() {
