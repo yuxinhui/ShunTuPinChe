@@ -57,7 +57,7 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/date_et"
-            android:hint="请输入出发时间"
+            android:hint="双击输入出发时间"
             android:textColorHint="#cccccc"
             android:textSize="15sp"
             android:textColor="#ffffff"

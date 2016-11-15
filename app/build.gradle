@@ -28,4 +28,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/Volley.jar')
     compile 'com.google.code.gson:gson:2.8.0'
+    compile files('libs/httpmime-4.1.2.jar')
+    compile files('libs/android-support-v4.jar')
 }

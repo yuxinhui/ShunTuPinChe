@@ -100,7 +100,7 @@ public class OwenrIndexActivity extends AppCompatActivity{
                     finsh_et.setError("目的地不能为空");
                     return;
                 }
-                String url_fabu= ShunTuApplication.URL+"carpool/info/add_yzy?oid="+oid+"&strtime="+riQi+"&startPlace="+
+                String url_fabu= ShunTuApplication.URL+"info/add?oid="+oid+"&strtime="+riQi+"&startPlace="+
                         chuShiDi+"&destination="+muDi+"&number="+renShu+"&telephone="+tel;
                 Log.e("立即发布",url_fabu);
                 faBu(url_fabu);
@@ -119,8 +119,8 @@ public class OwenrIndexActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(OwenrIndexActivity.this,OwenrVerifyActivity.class);
+                intent.putExtra("oid",oid);
                 startActivity(intent);
-                finish();
             }
         });
     }

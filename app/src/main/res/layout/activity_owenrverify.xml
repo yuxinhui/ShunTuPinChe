@@ -53,7 +53,7 @@
             android:layout_toEndOf="@+id/verify_shenfen_img"
             android:layout_marginLeft="15dp" />
         <ImageView
-            android:id="@+id/verify_fan_img"
+            android:id="@+id/verify_shenfen_fan_img"
             android:background="@mipmap/fanmian"
             android:layout_toEndOf="@id/verify_shenfen_zheng_img"
             android:layout_marginLeft="15dp"

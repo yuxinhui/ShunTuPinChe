@@ -59,7 +59,7 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
         Intent intent=getIntent();
         oid=intent.getStringExtra("oid");
         queue= Volley.newRequestQueue(this);
-        url_owenrhistory= ShunTuApplication.URL+"carpool/info/selectByOid?oid="+oid;
+        url_owenrhistory= ShunTuApplication.URL+"info/selectByOid?oid="+oid;
         Log.e("发布记录",url_owenrhistory);
         initData();
         date_lv= (ListView) findViewById(R.id.date_lv);
@@ -74,10 +74,9 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplication(),OwenrIndexActivity.class);
-                intent.putExtra("oid",owenrHistoryRecordBean.getData().get(0).getOid());
-                intent.putExtra("telephone",owenrHistoryRecordBean.getData().get(0).getTelephone());
+                /*intent.putExtra("oid",owenrHistoryRecordBean.getData().get(0).getOid());
+                intent.putExtra("telephone",owenrHistoryRecordBean.getData().get(0).getTelephone());*/
                 startActivity(intent);
-                finish();
             }
         });
     }
@@ -92,11 +91,18 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                         Gson gson=new Gson();
                         owenrHistoryRecordBean=gson.fromJson(s,OwenrHistoryRecordBean.class);
                         ArrayList<OwenrHistoryRecordBean.DataBean> been= (ArrayList<OwenrHistoryRecordBean.DataBean>) owenrHistoryRecordBean.getData();
-                        dataBeen.clear();
-                        dataBeen.addAll(been);
-                        owenrHistoryRecordAdapter.notifyDataSetChanged();
-                        Toast.makeText(OwenrHistoryRecordActivity.this,"查询成功",Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
+                        if (been==null){
+                            Toast.makeText(OwenrHistoryRecordActivity.this,"还没有发布记录",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                            return;
+                        }else {
+                            dataBeen.clear();
+                            dataBeen.addAll(been);
+                            owenrHistoryRecordAdapter.notifyDataSetChanged();
+                            Toast.makeText(OwenrHistoryRecordActivity.this,"查询成功",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -204,9 +210,10 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                             initData(i);
                             String up_id=bean.getId();
                             String up_phone=bean.getTelephone();
-                            String url_updata= ShunTuApplication.URL+"carpool/info/update?id="+up_id+"&strtime="+up_time+"&startPlace="
+                            String url_updata= ShunTuApplication.URL+"info/update?id="+up_id+"&strtime="+up_time+"&startPlace="
                                     +up_qidian+"&destination="+up_zhongdian+"&number="+up_renshu+"&telephone="+up_phone;
                             Log.e("修改信息",url_updata);
+                            historyRecordAdapter.notifyDataSetChanged();
                             upData(url_updata);
                             return;
 
@@ -231,7 +238,8 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             String delete=bean.getId();
-                            String url_delete=ShunTuApplication.URL+"carpool/info/delete?ids="+delete;
+                            String url_delete=ShunTuApplication.URL+"info/delete?ids="+delete;
+                            historyRecordAdapter.notifyDataSetChanged();
                             Log.e("删除信息",url_delete);
                             deleteData(url_delete);
                         }
@@ -257,7 +265,6 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                                 Gson gson=new Gson();
                                 delete_dataBeen=gson.fromJson(s,OwenrHistoryRecordBean.class);
                                 if ("ok".equals(up_dataBean.getStatus())){
-                                    historyRecordAdapter.notifyDataSetChanged();
                                     Toast.makeText(OwenrHistoryRecordActivity.this,"信息删除成功",Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -282,7 +289,6 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                                 Gson gson=new Gson();
                                 up_dataBean=gson.fromJson(s,OwenrUpDataBeen.class);
                                 if ("ok".equals(up_dataBean.getStatus())){
-                                    historyRecordAdapter.notifyDataSetChanged();
                                     Toast.makeText(view1.getContext(),"信息修改成功",Toast.LENGTH_SHORT).show();
                                 }
                             }

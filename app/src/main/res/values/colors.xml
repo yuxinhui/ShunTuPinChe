@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    //车主认证时上传图片的控件颜色
+    <color name="little_grey">#EBEBEB</color>
+    <color name="middle_grey">#CACACA</color>
+    <color name="grey">#DAD9DB</color>
+    <color name="trans">#00000000</color>
 </resources>

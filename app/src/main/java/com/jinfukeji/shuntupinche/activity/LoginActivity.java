@@ -82,10 +82,9 @@ public class LoginActivity extends AppCompatActivity{
                     pwd.requestFocus();
                     return;
                 }
-                url_login= ShunTuApplication.URL+"carpool/login?telephone="+loginId+"&password="+password;
+                url_login= ShunTuApplication.URL+"login?telephone="+loginId+"&password="+password;
                 Log.e("登录接口",url_login);
                 login(url_login);
-                finish();
                 return;
             }
         });
@@ -117,21 +116,18 @@ public class LoginActivity extends AppCompatActivity{
                                     editor.putString("PASSWORD",password);
                                     editor.commit();
                                 }
-                                /*LoginBean.DataBean dataBeen=bean.getData();
-                                Log.e("TAG",dataBeen.getId().toString());*/
                                 if ("passenger".equals(bean.getIdentity())){
                                     startMainActivity();
-                                    finish();
                                 }if ("owner".equals(bean.getIdentity())){
                                     Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
                                     intent.putExtra("id",bean.getData().getId());
                                     intent.putExtra("telephone",bean.getData().getTelephone());
                                     startActivity(intent);
-                                    finish();
                                 }
                                 DialogUtils.createToasdt(LoginActivity.this,bean.getMessage());
                             }else {
                                 DialogUtils.createToasdt(LoginActivity.this,"手机号或者密码错误");
+                                return;
                             }
                         }
 
@@ -186,7 +182,7 @@ public class LoginActivity extends AppCompatActivity{
             phonenumber.setText(sp.getString("USER_NAME",""));
             pwd.setText(sp.getString("PASSWORD",""));
             //判断自动登陆选择框状态
-            if (sp.getBoolean("AUTO_ISCHECK",false)){
+            /*if (sp.getBoolean("AUTO_ISCHECK",false)){
                 //设置默认是自动登录状态
                 automaticlogin.setChecked(true);
                 if ("passenger".equals(bean.getIdentity())){
@@ -195,7 +191,7 @@ public class LoginActivity extends AppCompatActivity{
                     Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
                     startActivity(intent);
                 }
-            }
+            }*/
         }
     }
 }

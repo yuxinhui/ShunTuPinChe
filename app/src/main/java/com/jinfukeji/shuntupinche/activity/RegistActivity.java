@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -69,7 +70,7 @@ public class RegistActivity extends AppCompatActivity{
                     number.requestFocus();
                     return;
                 }
-                String url_getCode= ShunTuApplication.URL+"carpool/tel_code?telephone="+telepone;
+                String url_getCode= ShunTuApplication.URL+"tel_code?telephone="+telepone;
                 Log.e("验证码接口",url_getCode);
                 getVerCode(url_getCode);
                 VercodeTime vct=new VercodeTime(1000*300,1000,getyanzhengma);
@@ -114,9 +115,9 @@ public class RegistActivity extends AppCompatActivity{
                     yanzhengmaNum.setError("验证码不能为空");
                     return;
                 }
-                String url_finsh=url_regist+"&tel_code="+validataCode;
+                String url_finsh=ShunTuApplication.URL+"register?telephone="+telepone+"&password="+password_txt+"&identity="+url_regist+"&tel_code="+validataCode;
                 regist(url_finsh);
-                finish();
+                Log.e("注册",url_finsh);
                 return;
             }
         });
@@ -124,11 +125,9 @@ public class RegistActivity extends AppCompatActivity{
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i==chezhu.getId()){
-                    String owner="owner";
-                    url_regist=ShunTuApplication.URL+"carpool/register?telephone="+telepone+"&password="+password_txt+"&identity="+owner;
+                    url_regist="owner";
                 }else if (i == chengke.getId()){
-                    String passenger="passenger";
-                    url_regist=ShunTuApplication.URL+"carpool/register?telephone="+telepone+"&password="+password_txt+"&identity="+passenger;
+                    url_regist="passenger";
                 }
             }
         });
@@ -137,6 +136,7 @@ public class RegistActivity extends AppCompatActivity{
     private void initData() {
         telepone=number.getText().toString();
         password_txt=password.getText().toString();
+        Log.e("密码",password_txt);
         validataCode=yanzhengmaNum.getText().toString();
         Log.e("验证码",validataCode);
     }
@@ -159,11 +159,15 @@ public class RegistActivity extends AppCompatActivity{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        Gson gson=new Gson();
-                        smsMessage=gson.fromJson(s,SmsMessage.class);
-                        if ("fail".equals(smsMessage.getStatus())){
-                            DialogUtils.createToasdt(RegistActivity.this,smsMessage.getMessage());
-                            return;
+                        if (s != null){
+                            Gson gson=new Gson();
+                            smsMessage=gson.fromJson(s,SmsMessage.class);
+                            if ("ok".equals(smsMessage.getStatus())){
+                                DialogUtils.createToasdt(RegistActivity.this,smsMessage.getMessage());
+                                return;
+                            }else {
+                                Toast.makeText(RegistActivity.this,"验证码获取失败",Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 },
@@ -187,7 +191,6 @@ public class RegistActivity extends AppCompatActivity{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        Log.e("注册接口",url_finsh);
                         if (s != null){
                             Gson gson=new Gson();
                             zhuceBean=gson.fromJson(s,ZhuceBean.class);
