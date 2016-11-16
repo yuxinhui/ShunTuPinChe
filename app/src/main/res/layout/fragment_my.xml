@@ -1,10 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="神马啊"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+    <RelativeLayout
+        android:background="#303F9F"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+        <TextView
+            android:text="客户端"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <ImageView
+        android:background="@mipmap/my_beijing"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <LinearLayout
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/changyongluxian_rl"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/luxian_img"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/lucheng"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:id="@+id/luxian_txt"
+                android:text="常用路线"
+                android:layout_toRightOf="@id/luxian_img"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@mipmap/jinru"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#cccccc"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+        <RelativeLayout
+            android:id="@+id/yue_rl"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/yue_img"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/yue"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:id="@+id/yue_txt"
+                android:text="账户余额"
+                android:layout_toRightOf="@id/yue_img"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@mipmap/jinru"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/tianqi_rl"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/tianqi_img"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/tianqi"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:id="@+id/tianqi_txt"
+                android:text="天气查询"
+                android:layout_toRightOf="@id/tianqi_img"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/tianqi_jinru"
+                android:src="@mipmap/jinru"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_toLeftOf="@id/tianqi_jinru"
+                android:src="@mipmap/newimg"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#cccccc"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+        <RelativeLayout
+            android:id="@+id/ditu_rl"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/ditu_img"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ditu"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:id="@+id/ditu_txt"
+                android:text="地图向导"
+                android:layout_toRightOf="@id/ditu_img"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@mipmap/jinru"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/shezhi_rl"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:id="@+id/shezhi_img"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/shezhi"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:id="@+id/shezhi_txt"
+                android:text="设置"
+                android:layout_toRightOf="@id/shezhi_img"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@mipmap/jinru"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

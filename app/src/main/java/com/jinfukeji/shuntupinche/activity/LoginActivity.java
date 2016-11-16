@@ -118,11 +118,13 @@ public class LoginActivity extends AppCompatActivity{
                                 }
                                 if ("passenger".equals(bean.getIdentity())){
                                     startMainActivity();
+                                    //finish();
                                 }if ("owner".equals(bean.getIdentity())){
                                     Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
                                     intent.putExtra("id",bean.getData().getId());
                                     intent.putExtra("telephone",bean.getData().getTelephone());
                                     startActivity(intent);
+                                    //finish();
                                 }
                                 DialogUtils.createToasdt(LoginActivity.this,bean.getMessage());
                             }else {

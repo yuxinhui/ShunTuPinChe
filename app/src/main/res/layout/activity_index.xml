@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_index"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/shuntu01"
     tools:context="com.jinfukeji.shuntupinche.IndexActivity">
 
-    <Button
-        android:id="@+id/regist_img_btn"
-        android:background="@mipmap/zhuceicon"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="66dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/login_img_btn"
-        android:background="@mipmap/dengluicon"
-        android:layout_above="@id/regist_img_btn"
-        android:layout_alignStart="@id/regist_img_btn"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:background="@mipmap/shuntu01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/regist_img_btn"
+            android:background="@mipmap/zhuceicon"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="66dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/login_img_btn"
+            android:background="@mipmap/dengluicon"
+            android:layout_above="@id/regist_img_btn"
+            android:layout_alignStart="@id/regist_img_btn"
+            android:layout_marginBottom="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
 </RelativeLayout>

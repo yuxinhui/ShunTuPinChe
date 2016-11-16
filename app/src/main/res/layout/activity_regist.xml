@@ -36,6 +36,7 @@
                 android:background="@null"
                 android:inputType="number"
                 android:layout_weight="1"
+                android:textColor="#ffffff"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/number" />
@@ -86,6 +87,7 @@
                     android:id="@+id/yanzhengmaNum"
                     android:layout_weight="1"
                     android:background="@null"
+                    android:textColor="#ffffff"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent" />
             </LinearLayout>
