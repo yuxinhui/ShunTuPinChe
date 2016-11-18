@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.jinfukeji.shuntupinche.R;
 import com.jinfukeji.shuntupinche.ShunTuApplication;
+import com.jinfukeji.shuntupinche.activity.BannerActivity;
 import com.jinfukeji.shuntupinche.adapter.PassengerChaXunAdapter;
 import com.jinfukeji.shuntupinche.bean.PassengerChaXunBean;
 import com.jinfukeji.shuntupinche.utils.DatePickerUtil;
@@ -108,6 +109,7 @@ public class ChaXunFragment extends Fragment{
             public void onClick(View view) {
                 //从栈中将当前fragment推出
                 getFragmentManager().popBackStack();
+                ((BannerActivity)getActivity()).showBanner();
             }
         });
     }
@@ -118,7 +120,7 @@ public class ChaXunFragment extends Fragment{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        if (s != null){
+
                             Gson gson=new Gson();
                             passengerChaXunBean=gson.fromJson(s,PassengerChaXunBean.class);
                             if ("ok".equals(passengerChaXunBean.getStatus())){
@@ -130,13 +132,13 @@ public class ChaXunFragment extends Fragment{
                             }else {
                                 Toast.makeText(getActivity(),"尚未有车主发布信息",Toast.LENGTH_SHORT).show();
                             }
-                        }
+
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getActivity(),"请检查您的网络连接",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"尚未有车主发布信息..",Toast.LENGTH_SHORT).show();
                     }
                 });
         queue.add(passenger);

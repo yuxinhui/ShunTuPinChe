@@ -116,15 +116,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/xiugai_btn"
+                android:id="@+id/lianxi_btn"
                 android:layout_weight="1"
-                android:src="@mipmap/xiugai"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/shanchu_btn"
-                android:layout_weight="1"
-                android:src="@mipmap/shanchu"
+                android:src="@mipmap/lianxi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>

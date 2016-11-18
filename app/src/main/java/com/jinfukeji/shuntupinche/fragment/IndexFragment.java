@@ -1,5 +1,6 @@
 package com.jinfukeji.shuntupinche.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import com.jinfukeji.shuntupinche.R;
 import com.jinfukeji.shuntupinche.activity.BannerActivity;
+import com.jinfukeji.shuntupinche.activity.FeedBackActivity;
+import com.jinfukeji.shuntupinche.activity.YouHuiActivity;
 
 /**
  * Created by "于志渊"
@@ -22,7 +25,6 @@ import com.jinfukeji.shuntupinche.activity.BannerActivity;
 
 public class IndexFragment extends Fragment {
     private TextView bybus_img,historicalrecord_img,huodong_img,feedback_img;
-    private BannerActivity bannerActivity= (BannerActivity) getActivity();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,13 +56,17 @@ public class IndexFragment extends Fragment {
                     FragmentTransaction ft=fm.beginTransaction();
                     ft.addToBackStack(null);
                     ft.replace(R.id.content,new ChaXunFragment()).commit();
-                    //bannerActivity.hideBanner();
+                    ((BannerActivity)getActivity()).hideBanner();
                     break;
                 case R.id.historicalrecord_img:
                     break;
                 case R.id.huodong_img:
+                    Intent intent=new Intent(getActivity(), YouHuiActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.feedback_img:
+                    Intent intent1=new Intent(getActivity(), FeedBackActivity.class);
+                    startActivity(intent1);
                     break;
             }
         }

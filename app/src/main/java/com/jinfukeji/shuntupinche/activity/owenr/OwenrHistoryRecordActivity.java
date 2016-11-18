@@ -201,7 +201,7 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                     view1=mInflater.inflate(R.layout.activity_owenrupdata,null);
                     queue1= Volley.newRequestQueue(view1.getContext());
                     initView(view1);
-                    initData(i);
+                    initOldData(i);
                     AlertDialog.Builder builder=new AlertDialog.Builder(view1.getContext());
                     builder.setView(view1);
                     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {

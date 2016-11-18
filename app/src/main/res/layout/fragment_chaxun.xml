@@ -70,6 +70,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="3dp"
             android:background="@null"
+            android:hint="输入出发地点"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RelativeLayout>
@@ -92,6 +93,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="3dp"
             android:background="@null"
+            android:hint="输入到达地点"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RelativeLayout>
@@ -114,6 +116,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="3dp"
             android:background="@null"
+            android:hint="输入人数"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RelativeLayout>
@@ -136,6 +139,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="3dp"
             android:background="@null"
+            android:hint="双击选择日期"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RelativeLayout>

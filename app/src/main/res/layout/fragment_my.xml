@@ -58,7 +58,7 @@
             android:background="#cccccc"
             android:layout_width="match_parent"
             android:layout_height="1dp" />
-        <RelativeLayout
+        <!--<RelativeLayout
             android:id="@+id/yue_rl"
             android:layout_width="match_parent"
             android:layout_height="35dp">
@@ -84,7 +84,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </RelativeLayout>
+        </RelativeLayout>-->
     </LinearLayout>
     <LinearLayout
         android:background="#ffffff"
@@ -132,7 +132,7 @@
             android:background="#cccccc"
             android:layout_width="match_parent"
             android:layout_height="1dp" />
-        <RelativeLayout
+       <!-- <RelativeLayout
             android:id="@+id/ditu_rl"
             android:layout_width="match_parent"
             android:layout_height="35dp">
@@ -158,7 +158,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </RelativeLayout>
+        </RelativeLayout>-->
     </LinearLayout>
     <LinearLayout
         android:background="#ffffff"
@@ -166,7 +166,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <RelativeLayout
+        <!--<RelativeLayout
             android:id="@+id/shezhi_rl"
             android:layout_width="match_parent"
             android:layout_height="35dp">
@@ -192,6 +192,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </RelativeLayout>
+        </RelativeLayout>-->
     </LinearLayout>
 </LinearLayout>

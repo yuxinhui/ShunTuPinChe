@@ -172,4 +172,8 @@ public class BannerActivity extends FragmentActivity implements View.OnClickList
     public void hideBanner(){
         banner_ll.setVisibility(View.GONE);
     }
+    //显示导航栏
+    public void showBanner(){
+        banner_ll.setVisibility(View.VISIBLE);
+    }
 }

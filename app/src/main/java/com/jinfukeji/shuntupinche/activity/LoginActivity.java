@@ -1,6 +1,6 @@
 package com.jinfukeji.shuntupinche.activity;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity{
 
     String loginId,password;
     private SharedPreferences sp;
+    SharedPreferences.Editor editor;
     RequestQueue queue;
     LoginBean bean=new LoginBean();
     String url_login;
@@ -50,7 +51,8 @@ public class LoginActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sp=this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);
+        sp=this.getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+        editor=sp.edit();
 
         queue= Volley.newRequestQueue(this);
         initView();
@@ -92,9 +94,9 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == remberpwd.getId()){
-                    sp.edit().putBoolean("ISCHECK",true).commit();
+                    editor.putBoolean("ISCHECK",true).commit();
                 }else if (i == automaticlogin.getId()){
-                    sp.edit().putBoolean("AUTO_ISCHECK",true).commit();
+                    editor.putBoolean("AUTO_ISCHECK",true).commit();
                 }
             }
         });
@@ -110,10 +112,10 @@ public class LoginActivity extends AppCompatActivity{
                             Gson gson=new Gson();
                             bean=gson.fromJson(s,LoginBean.class);
                             if ("ok".equals(bean.getStatus())){
-                                if (remberpwd.isChecked()){
-                                    SharedPreferences.Editor editor=sp.edit();
+                                if (remberpwd.isChecked() || automaticlogin.isChecked()){
                                     editor.putString("USERNAME",loginId);
                                     editor.putString("PASSWORD",password);
+                                    editor.putString("id",bean.getData().getId());
                                     editor.commit();
                                 }
                                 if ("passenger".equals(bean.getIdentity())){
@@ -184,16 +186,18 @@ public class LoginActivity extends AppCompatActivity{
             phonenumber.setText(sp.getString("USER_NAME",""));
             pwd.setText(sp.getString("PASSWORD",""));
             //判断自动登陆选择框状态
-            /*if (sp.getBoolean("AUTO_ISCHECK",false)){
+            if (sp.getBoolean("AUTO_ISCHECK",false)){
                 //设置默认是自动登录状态
                 automaticlogin.setChecked(true);
-                if ("passenger".equals(bean.getIdentity())){
+                phonenumber.setText(sp.getString("USER_NAME",""));
+                pwd.setText(sp.getString("PASSWORD",""));
+                /*if ("passenger".equals(bean.getIdentity())){
                     startMainActivity();
                 }else {
                     Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
                     startActivity(intent);
-                }
-            }*/
+                }*/
+            }
         }
     }
 }

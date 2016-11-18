@@ -37,13 +37,37 @@ public class MyFragment extends Fragment{
                 startActivity(intent);
             }
         });
+        luxian_rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        /*yue_rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"程序员正在努力写代码,请期待下个版本的更新",Toast.LENGTH_SHORT).show();
+            }
+        });
+        ditu_rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"程序员正在努力写代码,请期待下个版本的更新",Toast.LENGTH_SHORT).show();
+            }
+        });
+        shezhi_rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"程序员正在努力写代码,请期待下个版本的更新",Toast.LENGTH_SHORT).show();
+            }
+        });*/
     }
 
     private void initView(View view) {
         luxian_rl= (RelativeLayout) view.findViewById(R.id.changyongluxian_rl);
-        yue_rl= (RelativeLayout) view.findViewById(R.id.yue_rl);
         tianqi_rl= (RelativeLayout) view.findViewById(R.id.tianqi_rl);
+        /*yue_rl= (RelativeLayout) view.findViewById(R.id.yue_rl);
         ditu_rl= (RelativeLayout) view.findViewById(R.id.ditu_rl);
-        shezhi_rl= (RelativeLayout) view.findViewById(R.id.shezhi_rl);
+        shezhi_rl= (RelativeLayout) view.findViewById(R.id.shezhi_rl);*/
     }
 }
