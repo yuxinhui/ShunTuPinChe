@@ -46,5 +46,6 @@ public class PassengerHistoryActivity extends AppCompatActivity {
         returnpassenger= (ImageView) findViewById(R.id.return_passenger);
         passengerHistory=new PassengerHistoryAdapter(this,arrayList);
         passengerhistory_lv.setAdapter(passengerHistory);
+        passengerHistory.notifyDataSetChanged();
     }
 }

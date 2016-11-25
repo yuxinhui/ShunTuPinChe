@@ -1,10 +1,12 @@
 package com.jinfukeji.shuntupinche.adapter;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
@@ -32,8 +34,6 @@ public class PassengerChaXunAdapter extends BaseAdapter {
     ArrayList<PassengerChaXunBean.DataBean> dataBeen = new ArrayList<PassengerChaXunBean.DataBean>();
     LayoutInflater mLayoutInflater;
     PassengerChaXunBean.DataBean chaXunBean=new PassengerChaXunBean.DataBean();
-
-    private String date,start,finsh,renshu,phone;
 
     public PassengerChaXunAdapter(ArrayList<PassengerChaXunBean.DataBean> dataBeen, Context context) {
         this.dataBeen = dataBeen;
@@ -94,6 +94,14 @@ public class PassengerChaXunAdapter extends BaseAdapter {
                                 return;
                             }
                             view.getContext().startActivity(intent);
+                            SharedPreferences sp=view.getContext().getSharedPreferences("History", Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor=sp.edit();
+                            editor.putLong("date",chaXunBean.getTime());
+                            editor.putString("start",chaXunBean.getStartPlace());
+                            editor.putString("finsh",chaXunBean.getDestination());
+                            editor.putString("renshu",chaXunBean.getNumber());
+                            editor.putString("phone",chaXunBean.getTelephone());
+                            editor.commit();
                         }
                     });
                     builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
