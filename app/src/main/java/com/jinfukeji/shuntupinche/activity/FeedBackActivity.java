@@ -60,6 +60,7 @@ public class FeedBackActivity extends AppCompatActivity{
                 }
                 SharedPreferences sp=getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
                 String id=sp.getString("id","");
+                Log.e("id",id);
                 String url_feedback= ShunTuApplication.URL+"feedback/add?opid="+id+"&content="+feedback;
                 Log.e("意见反馈",url_feedback);
                 feedBack(url_feedback);

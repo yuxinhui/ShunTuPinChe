@@ -198,6 +198,7 @@ public class RegistActivity extends AppCompatActivity{
                                 Intent intent=new Intent(RegistActivity.this,RegistSuccessActivity.class);
                                 startActivity(intent);
                                 DialogUtils.createToasdt(RegistActivity.this,zhuceBean.getMessage());
+                                finish();
                             }else {
                                 DialogUtils.createToasdt(RegistActivity.this,"注册失败");
                                 return;

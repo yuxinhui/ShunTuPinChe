@@ -12,8 +12,8 @@ import android.app.Application;
 public class ShunTuApplication extends Application {
     public boolean isLogin=false;
     public static ShunTuApplication instace;
-//    public static final String URL="http://test.jinfully.com/";
-    public static final String URL="http://192.168.1.148:8080/carpool/";
+    public static final String URL="http://test.jinfully.com/";
+//    public static final String URL="http://192.168.1.148:8080/carpool/";
 
     @Override
     public void onCreate() {

@@ -209,7 +209,6 @@ public class OwenrVerifyActivity extends AppCompatActivity{
         verify_tijiao_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isUpLoad){
                     if (IDPicPath == null || IDPicfPath == null || drivingPicPath == null || drivingPicfPath == null || carPicPath == null || carPicfPath == null){
                         Toast.makeText(OwenrVerifyActivity.this, "请选择图片！", 2000).show();
                     }else {
@@ -233,10 +232,9 @@ public class OwenrVerifyActivity extends AppCompatActivity{
                                 UpLoadUtil.postFile(HOST,map);
                             }
                         }).start();
-                        Toast.makeText(OwenrVerifyActivity.this,"资料已上传，正在等待审核......\r\n请勿重复提交",8000).show();
+                        Toast.makeText(OwenrVerifyActivity.this,"资料已上传，正在等待审核......\r\n请勿重复提交",Toast.LENGTH_LONG).show();
                     }
-                    isUpLoad=false;
-                }
+
             }
         });
     }
