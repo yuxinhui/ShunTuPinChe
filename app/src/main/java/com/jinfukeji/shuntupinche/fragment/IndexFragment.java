@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.jinfukeji.shuntupinche.R;
 import com.jinfukeji.shuntupinche.activity.BannerActivity;
 import com.jinfukeji.shuntupinche.activity.FeedBackActivity;
+import com.jinfukeji.shuntupinche.activity.PassengerHistoryActivity;
 import com.jinfukeji.shuntupinche.activity.YouHuiActivity;
 
 /**
@@ -59,6 +60,8 @@ public class IndexFragment extends Fragment {
                     ((BannerActivity)getActivity()).hideBanner();
                     break;
                 case R.id.historicalrecord_img:
+                    Intent intent2=new Intent(getActivity(), PassengerHistoryActivity.class);
+                    startActivity(intent2);
                     break;
                 case R.id.huodong_img:
                     Intent intent=new Intent(getActivity(), YouHuiActivity.class);

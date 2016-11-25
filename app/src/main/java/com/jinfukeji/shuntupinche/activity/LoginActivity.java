@@ -58,6 +58,26 @@ public class LoginActivity extends AppCompatActivity{
         initView();
         initData();
         onClick();
+        //判断记住密码选择框的状态
+        if (sp.getBoolean("ISCHECK",false)){
+            //设置默认是记住密码状态
+            remberpwd.setChecked(true);
+            phonenumber.setText(sp.getString("USERNAME",""));
+            pwd.setText(sp.getString("PASSWORD",""));
+            //判断自动登陆选择框状态
+            if (sp.getBoolean("AUTO_ISCHECK",false)){
+                //设置默认是自动登录状态
+                automaticlogin.setChecked(true);
+                /*phonenumber.setText(sp.getString("USERNAME",""));
+                pwd.setText(sp.getString("PASSWORD",""));
+                if ("passenger".equals(bean.getIdentity())){
+                    startMainActivity();
+                }else {
+                    Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
+                    startActivity(intent);
+                }*/
+            }
+        }
     }
 
     //点击事件
@@ -112,7 +132,7 @@ public class LoginActivity extends AppCompatActivity{
                             Gson gson=new Gson();
                             bean=gson.fromJson(s,LoginBean.class);
                             if ("ok".equals(bean.getStatus())){
-                                if (remberpwd.isChecked() || automaticlogin.isChecked()){
+                                if (remberpwd.isChecked()){
                                     editor.putString("USERNAME",loginId);
                                     editor.putString("PASSWORD",password);
                                     editor.putString("id",bean.getData().getId());
@@ -120,13 +140,11 @@ public class LoginActivity extends AppCompatActivity{
                                 }
                                 if ("passenger".equals(bean.getIdentity())){
                                     startMainActivity();
-                                    //finish();
+                                    finish();
                                 }if ("owner".equals(bean.getIdentity())){
                                     Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
-                                    intent.putExtra("id",bean.getData().getId());
-                                    intent.putExtra("telephone",bean.getData().getTelephone());
                                     startActivity(intent);
-                                    //finish();
+                                    finish();
                                 }
                                 DialogUtils.createToasdt(LoginActivity.this,bean.getMessage());
                             }else {
@@ -178,26 +196,5 @@ public class LoginActivity extends AppCompatActivity{
         login_btn= (Button) findViewById(R.id.login_btn);
         needzhuce= (TextView) findViewById(R.id.needzhuce);
         forgetpass= (TextView) findViewById(R.id.forgetpass);
-
-        //判断记住密码选择框的状态
-        if (sp.getBoolean("ISCHECK",false)){
-            //设置默认是记住密码状态
-            remberpwd.setChecked(true);
-            phonenumber.setText(sp.getString("USER_NAME",""));
-            pwd.setText(sp.getString("PASSWORD",""));
-            //判断自动登陆选择框状态
-            if (sp.getBoolean("AUTO_ISCHECK",false)){
-                //设置默认是自动登录状态
-                automaticlogin.setChecked(true);
-                phonenumber.setText(sp.getString("USER_NAME",""));
-                pwd.setText(sp.getString("PASSWORD",""));
-                /*if ("passenger".equals(bean.getIdentity())){
-                    startMainActivity();
-                }else {
-                    Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
-                    startActivity(intent);
-                }*/
-            }
-        }
     }
 }

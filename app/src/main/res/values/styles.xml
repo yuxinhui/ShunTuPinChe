@@ -11,8 +11,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 
-    //车主认证图片选择style
-    <!--<style name="transparentFrameWindowStyle" parent="android:style/Theme.Dialog">
+    <!--//车主认证图片选择style
+    <style name="transparentFrameWindowStyle" parent="android:style/Theme.Dialog">
         <item name="android:windowBackground">@drawable/photo_choose_bg</item>
     </style>
     <style name="anim_style">

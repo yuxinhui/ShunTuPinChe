@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.jinfukeji.shuntupinche.R;
+import com.jinfukeji.shuntupinche.activity.MyLuXianActivity;
 import com.jinfukeji.shuntupinche.weather.MyTianQiActivity;
 
 /**
@@ -40,7 +41,8 @@ public class MyFragment extends Fragment{
         luxian_rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(getContext(), MyLuXianActivity.class);
+                startActivity(intent);
             }
         });
         /*yue_rl.setOnClickListener(new View.OnClickListener() {

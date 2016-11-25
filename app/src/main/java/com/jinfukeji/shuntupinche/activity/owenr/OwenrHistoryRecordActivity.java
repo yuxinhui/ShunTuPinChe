@@ -1,10 +1,12 @@
 package com.jinfukeji.shuntupinche.activity.owenr;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -56,8 +58,10 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owenrhistoryrecord);
-        Intent intent=getIntent();
-        oid=intent.getStringExtra("oid");
+        /*Intent intent=getIntent();
+        oid=intent.getStringExtra("oid");*/
+        SharedPreferences sp=getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+        oid=sp.getString("id","");
         queue= Volley.newRequestQueue(this);
         url_owenrhistory= ShunTuApplication.URL+"info/selectByOid?oid="+oid;
         Log.e("发布记录",url_owenrhistory);
@@ -74,9 +78,8 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplication(),OwenrIndexActivity.class);
-                /*intent.putExtra("oid",owenrHistoryRecordBean.getData().get(0).getOid());
-                intent.putExtra("telephone",owenrHistoryRecordBean.getData().get(0).getTelephone());*/
                 startActivity(intent);
+                finish();
             }
         });
     }

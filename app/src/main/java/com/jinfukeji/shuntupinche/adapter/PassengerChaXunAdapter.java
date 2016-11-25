@@ -31,6 +31,9 @@ import java.util.ArrayList;
 public class PassengerChaXunAdapter extends BaseAdapter {
     ArrayList<PassengerChaXunBean.DataBean> dataBeen = new ArrayList<PassengerChaXunBean.DataBean>();
     LayoutInflater mLayoutInflater;
+    PassengerChaXunBean.DataBean chaXunBean=new PassengerChaXunBean.DataBean();
+
+    private String date,start,finsh,renshu,phone;
 
     public PassengerChaXunAdapter(ArrayList<PassengerChaXunBean.DataBean> dataBeen, Context context) {
         this.dataBeen = dataBeen;
@@ -78,7 +81,6 @@ public class PassengerChaXunAdapter extends BaseAdapter {
                     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            PassengerChaXunBean.DataBean chaXunBean = getItem(i);
                             String num = chaXunBean.getTelephone();
                             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + num));
                             if (ActivityCompat.checkSelfPermission(view.getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -107,12 +109,12 @@ public class PassengerChaXunAdapter extends BaseAdapter {
         }else {
             holder= (viewHolder) view.getTag();
         }
-        PassengerChaXunBean.DataBean bean=getItem(i);
-        holder.qidian_et.setText(bean.getStartPlace());
-        holder.zhongdian_et.setText(bean.getDestination());
-        holder.passengerrenshu_et.setText(bean.getNumber());
+        chaXunBean=getItem(i);
+        holder.qidian_et.setText(chaXunBean.getStartPlace());
+        holder.zhongdian_et.setText(chaXunBean.getDestination());
+        holder.passengerrenshu_et.setText(chaXunBean.getNumber());
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        long time=new Long(bean.getTime());
+        long time=new Long(chaXunBean.getTime());
         holder.time_et.setText(sdf.format(time));
         return view;
     }

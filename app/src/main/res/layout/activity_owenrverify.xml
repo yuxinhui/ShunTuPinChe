@@ -21,6 +21,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+    <TextView
+        android:layout_marginStart="10dp"
+        android:text="提示：尊敬的用户的您好，为了您的更好体验。请您认真提交您的资料,我们工作人员会在您提交的后以短信方式给您答复。感谢您的使用"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <RelativeLayout
         android:background="#ffffff"
         android:layout_width="match_parent"

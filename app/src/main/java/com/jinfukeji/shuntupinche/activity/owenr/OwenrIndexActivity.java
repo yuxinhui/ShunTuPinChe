@@ -1,8 +1,10 @@
 package com.jinfukeji.shuntupinche.activity.owenr;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -50,9 +52,12 @@ public class OwenrIndexActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owenrindex);
         queue= Volley.newRequestQueue(this);
-        Intent intent=getIntent();
+        /*Intent intent=getIntent();
         oid=intent.getStringExtra("id");
-        tel=intent.getStringExtra("telephone");
+        tel=intent.getStringExtra("telephone");*/
+        SharedPreferences sp=getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+        oid=sp.getString("id","");
+        tel=sp.getString("USERNAME","");
         initView();
         initData();
         onClick();
@@ -111,16 +116,16 @@ public class OwenrIndexActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplication(),OwenrHistoryRecordActivity.class);
-                intent.putExtra("oid",oid);
                 startActivity(intent);
+                finish();
             }
         });
         owenrverify_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(OwenrIndexActivity.this,OwenrVerifyActivity.class);
-                intent.putExtra("oid",oid);
                 startActivity(intent);
+                finish();
             }
         });
     }

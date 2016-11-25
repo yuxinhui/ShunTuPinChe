@@ -98,7 +98,7 @@ public class ChaXunFragment extends Fragment{
                     chengke_date_et.setError("日期不能为空");
                     return;
                 }
-                String url_chaXun= ShunTuApplication.URL+"carpool/info/select?startPlace="+chengke_start+"&destination="+chengke_finsh+"&time="+chengke_date;
+                String url_chaXun= ShunTuApplication.URL+"info/select?startPlace="+chengke_start+"&destination="+chengke_finsh+"&time="+chengke_date+"&number="+chengke_renshu;
                 chaXun(url_chaXun);
                 Log.e("乘客查询",url_chaXun);
                 return;
@@ -120,7 +120,7 @@ public class ChaXunFragment extends Fragment{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-
+                        if (s != null){
                             Gson gson=new Gson();
                             passengerChaXunBean=gson.fromJson(s,PassengerChaXunBean.class);
                             if ("ok".equals(passengerChaXunBean.getStatus())){
@@ -132,13 +132,13 @@ public class ChaXunFragment extends Fragment{
                             }else {
                                 Toast.makeText(getActivity(),"尚未有车主发布信息",Toast.LENGTH_SHORT).show();
                             }
-
+                        }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getActivity(),"尚未有车主发布信息..",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"尚未有车主发布信息.........",Toast.LENGTH_SHORT).show();
                     }
                 });
         queue.add(passenger);
