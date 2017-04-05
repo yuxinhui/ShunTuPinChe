@@ -23,7 +23,10 @@ import java.util.List;
 
 
 /**
- * Created by ZYMAppOne on 2015/12/16.
+ * Created by "于志渊"
+ * 时间:"16:32"
+ * 包名:com.jinfukeji.shuntupinche.activity.owenr
+ * 描述:司机拍照认证
  */
 public class ActionSheetDialog {
     private Context context;

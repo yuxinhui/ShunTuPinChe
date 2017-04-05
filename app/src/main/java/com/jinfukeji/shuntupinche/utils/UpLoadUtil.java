@@ -24,6 +24,7 @@ public class UpLoadUtil {
     private static final String TAG = "uploadImage";
     private static final int TIME_OUT = 60 * 1000; // 超时时间
     private static final String CHARSET = "utf-8"; // 设置编码
+    public static int res;
 
     /**
      * Android上传文件到服务端
@@ -182,7 +183,7 @@ public class UpLoadUtil {
             outStream.write(end_data);
             outStream.flush();
             // 得到响应码
-            int res = conn.getResponseCode();
+            res= conn.getResponseCode();
             Log.e(TAG,"res"+res);
             InputStream in = conn.getInputStream();
             StringBuilder sbResult = new StringBuilder();

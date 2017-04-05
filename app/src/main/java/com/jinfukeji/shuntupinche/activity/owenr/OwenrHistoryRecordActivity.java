@@ -30,6 +30,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.jinfukeji.shuntupinche.R;
 import com.jinfukeji.shuntupinche.ShunTuApplication;
+import com.jinfukeji.shuntupinche.bean.OwenrDeleteBeen;
 import com.jinfukeji.shuntupinche.bean.OwenrHistoryRecordBean;
 import com.jinfukeji.shuntupinche.bean.OwenrUpDataBeen;
 import com.jinfukeji.shuntupinche.utils.DatePickerUtil;
@@ -85,7 +86,7 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
     }
 
     //获取发布历史记录数据
-    private void initData() {
+    public void initData() {
         final ProgressDialog dialog=ProgressDialog.show(this,"发布记录","加载中......");
         StringRequest owenrHiatory=new StringRequest(Request.Method.POST, url_owenrhistory,
                 new Response.Listener<String>() {
@@ -134,7 +135,7 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
         String up_time,up_qidian,up_zhongdian,up_renshu,old_time,old_qidian,old_zhongdian,old_renshu;
         OwenrUpDataBeen up_dataBean=new OwenrUpDataBeen();
         OwenrHistoryRecordBean.DataBean bean=new OwenrHistoryRecordBean.DataBean();
-        OwenrHistoryRecordBean delete_dataBeen=new OwenrHistoryRecordBean();
+        OwenrDeleteBeen delete_dataBeen=new OwenrDeleteBeen();
         RequestQueue queue1;
         View view1;
         OwenrHistoryRecordAdapter historyRecordAdapter;
@@ -210,13 +211,12 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            initData(i);
+                            initNewData(i);
                             String up_id=bean.getId();
                             String up_phone=bean.getTelephone();
                             String url_updata= ShunTuApplication.URL+"info/update?id="+up_id+"&strtime="+up_time+"&startPlace="
                                     +up_qidian+"&destination="+up_zhongdian+"&number="+up_renshu+"&telephone="+up_phone;
                             Log.e("修改信息",url_updata);
-                            historyRecordAdapter.notifyDataSetChanged();
                             upData(url_updata);
                             return;
 
@@ -245,6 +245,7 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                             historyRecordAdapter.notifyDataSetChanged();
                             Log.e("删除信息",url_delete);
                             deleteData(url_delete);
+                            return;
                         }
                     });
                     builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -266,9 +267,9 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                         public void onResponse(String s) {
                             if (s != null){
                                 Gson gson=new Gson();
-                                delete_dataBeen=gson.fromJson(s,OwenrHistoryRecordBean.class);
+                                delete_dataBeen=gson.fromJson(s,OwenrDeleteBeen.class);
                                 if ("ok".equals(up_dataBean.getStatus())){
-                                    Toast.makeText(OwenrHistoryRecordActivity.this,"信息删除成功",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(OwenrHistoryRecordActivity.this,"信息删除成功,下拉刷新试试",Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
@@ -292,7 +293,7 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
                                 Gson gson=new Gson();
                                 up_dataBean=gson.fromJson(s,OwenrUpDataBeen.class);
                                 if ("ok".equals(up_dataBean.getStatus())){
-                                    Toast.makeText(view1.getContext(),"信息修改成功",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(view1.getContext(),"信息修改成功,下拉刷新试试",Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
@@ -307,8 +308,7 @@ public class OwenrHistoryRecordActivity extends AppCompatActivity {
         }
 
         //获取修改的信息
-        private void initData(int i) {
-            //initOldData(i);
+        private void initNewData(int i) {
             up_time=up_time_et.getText().toString();
             up_qidian=up_qidian_et.getText().toString();
             up_zhongdian=up_zhongdian_et.getText().toString();

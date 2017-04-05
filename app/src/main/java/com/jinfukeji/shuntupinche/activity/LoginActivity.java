@@ -59,23 +59,24 @@ public class LoginActivity extends AppCompatActivity{
         initData();
         onClick();
         //判断记住密码选择框的状态
-        if (sp.getBoolean("ISCHECK",false)){
+        if (sp.getBoolean("ISCHECK",true)){
             //设置默认是记住密码状态
-            remberpwd.setChecked(true);
             phonenumber.setText(sp.getString("USERNAME",""));
             pwd.setText(sp.getString("PASSWORD",""));
-            //判断自动登陆选择框状态
-            if (sp.getBoolean("AUTO_ISCHECK",false)){
-                //设置默认是自动登录状态
-                automaticlogin.setChecked(true);
-                /*phonenumber.setText(sp.getString("USERNAME",""));
+        }
+        //判断自动登陆选择框状态
+        if (sp.getBoolean("AUTO_ISCHECK",false)){
+            //设置默认是自动登录状态
+            automaticlogin.setChecked(true);
+                phonenumber.setText(sp.getString("USERNAME",""));
                 pwd.setText(sp.getString("PASSWORD",""));
-                if ("passenger".equals(bean.getIdentity())){
-                    startMainActivity();
-                }else {
-                    Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
-                    startActivity(intent);
-                }*/
+            if ("passenger".equals(bean.getIdentity())){
+                startMainActivity();
+                finish();
+            }else {
+                Intent intent=new Intent(LoginActivity.this,OwenrIndexActivity.class);
+                startActivity(intent);
+                finish();
             }
         }
     }
@@ -116,7 +117,7 @@ public class LoginActivity extends AppCompatActivity{
                 if (i == remberpwd.getId()){
                     editor.putBoolean("ISCHECK",true).commit();
                 }else if (i == automaticlogin.getId()){
-                    editor.putBoolean("AUTO_ISCHECK",true).commit();
+                    editor.putBoolean("AUTO_ISCHECK",false).commit();
                 }
             }
         });

@@ -233,6 +233,9 @@ public class OwenrVerifyActivity extends AppCompatActivity{
                             }
                         }).start();
                         Toast.makeText(OwenrVerifyActivity.this,"资料已上传，正在等待审核......\r\n请勿重复提交",Toast.LENGTH_LONG).show();
+                        if (UpLoadUtil.res == 200){
+                            Toast.makeText(OwenrVerifyActivity.this,"资料上传成功",Toast.LENGTH_LONG).show();
+                        }
                     }
 
             }
